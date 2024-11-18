@@ -33,7 +33,6 @@ class DetailsAdapter : RecyclerView.Adapter<DetailsAdapter.Holder>() {
                 releaseDate.text = movieDetails.release_date
                 movieDescription.text = movieDetails.overview
 
-
                 Glide.with(binding.root)
                     .load("https://image.tmdb.org/t/p/w500"+movieDetails.poster_path)
                     .into(moviePoster)

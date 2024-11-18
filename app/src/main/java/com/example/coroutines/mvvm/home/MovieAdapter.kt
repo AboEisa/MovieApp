@@ -50,6 +50,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.Holder>() {
                movieTitle.text = movieResult.title
                 movieRating.text = movieResult.vote_average.toString()
 
+
                 Glide.with(binding.root)
                     .load("https://image.tmdb.org/t/p/w500"+movieResult.poster_path)
                     .placeholder( R.drawable.place_holder)
