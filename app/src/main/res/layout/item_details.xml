@@ -45,7 +45,7 @@
             android:textColor="@color/white"
             android:gravity="fill_horizontal"
             android:textStyle="bold"
-            android:text="Movie Title" />
+            android:text="@string/movie_title" />
 
         <!-- Release Date -->
         <LinearLayout
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:textColor="@color/white"
-                android:text="Release Date: 2022-05-20"
+                android:text="@string/release_date_2022_05_20"
 
                 />
 
@@ -76,7 +76,6 @@
             android:textSize="16sp"
             android:layout_marginTop="12dp"
             android:textColor="@color/white"
-
             android:text="A brief description of the movie goes here. This is the place where you give an overview of the movie’s plot and major elements." />
     </LinearLayout>
 

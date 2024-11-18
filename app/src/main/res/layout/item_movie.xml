@@ -35,7 +35,7 @@
                 android:id="@+id/movieTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Movie Title"
+                android:text="@string/movie_title"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="#FFFFFF"/>
@@ -53,7 +53,7 @@
                     android:id="@+id/movieRating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="8.5"
+                    android:text="@string/_8_5"
                     android:textSize="14sp"
                     android:textColor="#B3B3B3"/>
 
