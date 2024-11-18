@@ -117,11 +117,7 @@ dependencies {
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
 
 
-
-
-
-   
-
+    implementation("com.airbnb.android:lottie:6.3.0")
 
 
 
