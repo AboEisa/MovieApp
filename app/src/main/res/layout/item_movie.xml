@@ -33,6 +33,7 @@
             android:textStyle="bold"
             android:textColor="#FFFFFF" />
 
+
         <!-- Movie Rating -->
         <TextView
             android:id="@+id/movieRating"
@@ -43,6 +44,19 @@
             android:text="Rating: 8.5"
             android:textSize="14sp"
             android:textColor="#B3B3B3" />
+
+
+        <!-- Star Icon -->
+        <ImageView
+            android:id="@+id/starIcon"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_below="@+id/movieTitle"
+           android:layout_marginTop="@dimen/_3sdp"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_toEndOf="@+id/movieRating"
+            android:src="@android:drawable/btn_star_big_on"
+            app:tint="#FFD700" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
