@@ -16,6 +16,7 @@
 
         <!-- Movie Poster -->
         <ImageView
+            android:padding="@dimen/_5sdp"
             android:id="@+id/moviePoster"
             android:layout_width="match_parent"
             android:layout_height="200dp"
