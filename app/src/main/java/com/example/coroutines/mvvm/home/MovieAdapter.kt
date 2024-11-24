@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.coroutines.Constant
 import com.example.coroutines.R
 
 import com.example.coroutines.databinding.ItemMovieBinding
@@ -52,7 +53,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.Holder>() {
 
 
                 Glide.with(binding.root)
-                    .load("https://image.tmdb.org/t/p/w500"+movieResult.poster_path)
+                    .load(Constant.IMAGES+movieResult.poster_path)
                     .placeholder( R.drawable.place_holder)
                     .into(moviePoster)
 

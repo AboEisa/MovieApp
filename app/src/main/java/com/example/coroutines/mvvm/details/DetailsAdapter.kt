@@ -3,6 +3,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.coroutines.Constant
 import com.example.coroutines.mvvm.details.MovieDetailsModel
 import com.example.coroutines.databinding.ItemDetailsBinding
 
@@ -34,7 +35,7 @@ class DetailsAdapter : RecyclerView.Adapter<DetailsAdapter.Holder>() {
                 movieDescription.text = movieDetails.overview
 
                 Glide.with(binding.root)
-                    .load("https://image.tmdb.org/t/p/w500"+movieDetails.poster_path)
+                    .load(Constant.IMAGES+movieDetails.poster_path)
                     .into(moviePoster)
             }
         }

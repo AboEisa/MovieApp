@@ -2,6 +2,7 @@ package com.example.coroutines.module
 
 import android.content.Context
 import androidx.room.Room
+import com.example.coroutines.Constant
 import com.example.coroutines.data.local.MyDao
 import com.example.coroutines.data.local.MyDataBase
 import com.example.coroutines.data.network.CallApi
@@ -31,7 +32,7 @@ object MyModule {
                 val requestWithHeader = original.newBuilder()
                     .header(
                         "Authorization",
-                        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzOGIzZWI2Yzg3Zjg2YWU4MTgwNGJmOTdhMWRlOTUzYSIsIm5iZiI6MTczMDA1NjU4Mi41ODUxNjgsInN1YiI6IjY3MWU4ZjdkNzY5MTA3ZDc3YjQ4MmE5YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EHbewBRVtAtsucnErozByEq6Z_NuCvpm-dM16zYguyM"
+                        Constant.BEARER_TOKEN
                     )
                     .build()
 
@@ -47,7 +48,7 @@ object MyModule {
 
         return Retrofit.Builder()
             .client(okhttp)
-            .baseUrl("https://api.themoviedb.org/3/")
+            .baseUrl(Constant.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
