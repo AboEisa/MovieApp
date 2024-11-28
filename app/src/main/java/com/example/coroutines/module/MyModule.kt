@@ -3,6 +3,8 @@ package com.example.coroutines.module
 import android.content.Context
 import androidx.room.Room
 import com.example.coroutines.Constant
+import com.example.coroutines.Constant.Companion.BASE_URL
+import com.example.coroutines.Constant.Companion.BEARER_TOKEN
 import com.example.coroutines.data.local.MyDao
 import com.example.coroutines.data.local.MyDataBase
 import com.example.coroutines.data.network.CallApi
@@ -32,7 +34,7 @@ object MyModule {
                 val requestWithHeader = original.newBuilder()
                     .header(
                         "Authorization",
-                        Constant.BEARER_TOKEN
+                        BEARER_TOKEN
                     )
                     .build()
 
@@ -48,7 +50,7 @@ object MyModule {
 
         return Retrofit.Builder()
             .client(okhttp)
-            .baseUrl(Constant.BASE_URL)
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
