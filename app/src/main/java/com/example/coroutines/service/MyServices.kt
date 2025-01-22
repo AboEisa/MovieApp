@@ -11,6 +11,7 @@ import android.util.Log
 import androidx.core.app.NotificationCompat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -19,52 +20,35 @@ class MyServices : Service()  {
         return null
     }
 
+    //service lifecycle
+
     override fun onCreate() {
         super.onCreate()
 
-//        val notificationBuilder = NotificationCompat.Builder(
-//            this
-//            , "channelId")
-//        notificationBuilder.setContentTitle("Hello")
-//        notificationBuilder.setContentText("Running...")
-//        notificationBuilder.setPriority(NotificationCompat.PRIORITY_LOW)
-//
-//        notificationBuilder.setSmallIcon(android.R.drawable.ic_dialog_info)
-//
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-//            startForeground(1, notificationBuilder.build(), FOREGROUND_SERVICE_TYPE_DATA_SYNC)
-//        }else{
-//            startForeground(1, notificationBuilder.build())
-//        }
+    }
 
-
+    override fun onDestroy() {
+        super.onDestroy()
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-
-
-//        CoroutineScope(Dispatchers.IO).launch {
-//            start()
-//        }
-        return START_STICKY
-//    }
-
-//    private suspend fun start(){
-//
-//        for (i in 0..1000){
-//            delay(1000)
-//            Log.e("TAG", "start: $i")
-//        }
-//    }
-
-//    override fun onTaskRemoved(rootIntent: Intent?) {
-//        Log.e("TAG", "onTaskRemoved: ")
-//        super.onTaskRemoved(rootIntent)
-//    }
+        CoroutineScope(Dispatchers.IO).launch {
+            start()
         }
-
-    override fun onDestroy() {
-        Log.e("TAG", "onDestroy: ")
-        super.onDestroy()
+        return START_REDELIVER_INTENT
     }
-}
+
+   private suspend fun start(){
+        for (i in 1 .. 1000){
+            delay(1000)
+            Log.e("TAG", "start: $i", )
+        }
+    }
+
+    override fun onTaskRemoved(rootIntent: Intent?) {
+        super.onTaskRemoved(rootIntent)
+    }
+
+
+
+  }

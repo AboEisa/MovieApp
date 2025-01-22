@@ -1,6 +1,7 @@
 package com.example.coroutines.mvvm.details
 
 import DetailsAdapter
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.fragment.app.viewModels
 import com.example.coroutines.R
 
 import com.example.coroutines.databinding.FragmentDetailsBinding
+import com.example.coroutines.service.MyServices
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -40,6 +42,10 @@ class DetailsFragment :Fragment() {
         val movieId = DetailsFragmentArgs.fromBundle(requireArguments()).id
         detailsViewModel.getMovieDetails(movieId)
         observers()
+
+        requireActivity().apply {
+            startService(Intent(this, MyServices::class.java))
+        }
     }
 
     private fun observers(){

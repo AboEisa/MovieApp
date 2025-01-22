@@ -1,6 +1,11 @@
 package com.example.coroutines
 
 import android.app.Application
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.graphics.Color
+import android.os.Build
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
@@ -10,24 +15,25 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         notificationChannel()
-
     }
 
-    private fun notificationChannel(){
+    fun notificationChannel(){
+       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+           val channel = NotificationChannel("APP_CHANNEL"
+               ,"APP_CHANNEL"
+               ,NotificationManager.IMPORTANCE_DEFAULT
+           )
+           channel.lightColor = Color.BLUE
+           channel.shouldVibrate()
+           channel.vibrationPattern = longArrayOf(100,200,300,400,500,400,300,200,400)
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            val channel = android.app.NotificationChannel(
-                "channelId",
-                "channelName",
-                android.app.NotificationManager.IMPORTANCE_HIGH
+           val manager = getSystemService(NotificationManager::class.java)
+           manager.createNotificationChannel(channel)
 
-            )
-            channel.lightColor = android.graphics.Color.BLUE
-            val manager = getSystemService(android.app.NotificationManager::class.java)
-            manager.createNotificationChannel(channel)
-
-        }
+       }
     }
+
+
 
 
 

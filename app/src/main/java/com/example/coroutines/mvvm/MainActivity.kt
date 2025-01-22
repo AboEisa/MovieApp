@@ -29,38 +29,36 @@ class MainActivity : AppCompatActivity() {
         //dynamic BroadCast
         registerReceiver(receiver, IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED))
 
-
+//        binding.btn.setOnClickListener {
+//           getNotification()
+//        }
     }
 
-
-
+//    private fun sendNotification(){
+//        val notification = NotificationCompat.Builder(this, "APP_CHANNEL")
+//        notification.setContentTitle("Hello")
+//        notification.setContentText("adsadasdsadsadasdas")
+//        notification.setSmallIcon(android.R.drawable.ic_dialog_info)
+//        notification.setPriority(NotificationCompat.PRIORITY_HIGH)
+//
+//        val notificationManager = getSystemService(NotificationManager::class.java)
+//        notificationManager.notify(1, notification.build())
+//
+//
+//    }
     // this example for any permission
-
 //    private fun getNotification() {
 //        if (ContextCompat.checkSelfPermission(
 //                this, android.Manifest.permission.POST_NOTIFICATIONS
 //            ) != android.content.pm.PackageManager.PERMISSION_GRANTED
 //        )
 //            requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), 100)
-//
-//
 //    else{
 //        sendNotification()
 //        }
 //    }
 
-//    private fun sendNotification(){
-//        val notificationBuilder = NotificationCompat.Builder(
-//            this
-//            , "channelId")
-//        notificationBuilder.setContentTitle("Hello")
-//        notificationBuilder.setContentText("World")
-//        notificationBuilder.setSmallIcon(android.R.drawable.ic_dialog_info)
-//
-//        val notificationManager = getSystemService(NotificationManager::class.java)
-//        notificationManager.notify(1, notificationBuilder.build())
-//
-//    }
+
 
     override fun onDestroy() {
         super.onDestroy()
