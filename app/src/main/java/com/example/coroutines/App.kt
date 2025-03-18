@@ -17,7 +17,7 @@ class App : Application() {
         notificationChannel()
     }
 
-    fun notificationChannel(){
+   private fun notificationChannel(){
        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
            val channel = NotificationChannel("APP_CHANNEL"
                ,"APP_CHANNEL"

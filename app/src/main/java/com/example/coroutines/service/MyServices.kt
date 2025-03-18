@@ -35,7 +35,7 @@ class MyServices : Service()  {
         CoroutineScope(Dispatchers.IO).launch {
             start()
         }
-        return START_REDELIVER_INTENT
+        return START_STICKY
     }
 
    private suspend fun start(){

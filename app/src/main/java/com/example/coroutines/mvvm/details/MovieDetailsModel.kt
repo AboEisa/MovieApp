@@ -1,4 +1,4 @@
-package com.example.coroutines.mvvm.details
+package com.example.coroutines.CleanArchitecture.data.models
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

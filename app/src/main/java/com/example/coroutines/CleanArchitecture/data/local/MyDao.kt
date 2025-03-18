@@ -1,14 +1,15 @@
-package com.example.coroutines.data.local
+package com.example.coroutines.CleanArchitecture.data.local
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.coroutines.mvvm.home.MovieResult
+import com.example.coroutines.CleanArchitecture.data.models.MovieResult
 
 
 @Dao
 interface MyDao {
-        @Insert(onConflict = androidx.room.OnConflictStrategy.REPLACE)
+        @Insert(onConflict = OnConflictStrategy.REPLACE)
         suspend fun insertMovies(list: List<MovieResult>)
 
         @Query("SELECT * FROM MovieResult")

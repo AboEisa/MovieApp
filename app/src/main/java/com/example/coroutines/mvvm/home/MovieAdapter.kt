@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.coroutines.CleanArchitecture.presentation.PresentationMovieResult
 import com.example.coroutines.Constant
 import com.example.coroutines.R
 
@@ -13,7 +14,7 @@ import com.example.coroutines.databinding.ItemMovieBinding
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.Holder>() {
 
 
-    var movieList : ArrayList<MovieResult> ?=null
+    var movieList : ArrayList<PresentationMovieResult> ?=null
 
     var onItemClick : OnItemClick? = null
 
@@ -46,7 +47,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.Holder>() {
             }
         }
 
-        fun bind( movieResult: MovieResult) {
+        fun bind( movieResult: PresentationMovieResult) {
             binding.apply {
                movieTitle.text = movieResult.title
                 movieRating.text = movieResult.vote_average.toString()

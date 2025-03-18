@@ -2,12 +2,17 @@ package com.example.coroutines.module
 
 import android.content.Context
 import androidx.room.Room
-import com.example.coroutines.Constant
+import com.example.coroutines.CleanArchitecture.data.Repository
+import com.example.coroutines.CleanArchitecture.data.local.ILocalDataSource
+import com.example.coroutines.CleanArchitecture.data.local.LocalDataSource
 import com.example.coroutines.Constant.Companion.BASE_URL
 import com.example.coroutines.Constant.Companion.BEARER_TOKEN
-import com.example.coroutines.data.local.MyDao
-import com.example.coroutines.data.local.MyDataBase
-import com.example.coroutines.data.network.CallApi
+import com.example.coroutines.CleanArchitecture.data.local.MyDao
+import com.example.coroutines.CleanArchitecture.data.local.MyDataBase
+import com.example.coroutines.CleanArchitecture.data.network.CallApi
+import com.example.coroutines.CleanArchitecture.data.network.IRemoteDataSource
+import com.example.coroutines.CleanArchitecture.data.network.RemoteDataSource
+import com.example.coroutines.CleanArchitecture.domain.IRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -86,7 +91,6 @@ object MyModule {
     @Singleton
     @Provides
     fun getMyDataBase(@ApplicationContext context: Context) : MyDataBase {
-
         return Room.databaseBuilder(context, MyDataBase::class.java, "MyDataBase")
             .fallbackToDestructiveMigration()
             .build()
@@ -98,5 +102,21 @@ object MyModule {
         return myDataBase.myDao()
 
     }
+    @Singleton
+    @Provides
+    fun getRemoteDataSource(apiService: CallApi): IRemoteDataSource{
+        return RemoteDataSource(apiService)
+    }
+    @Singleton
+    @Provides
+    fun getLocalDataSource(myDao: MyDao): ILocalDataSource{
+        return LocalDataSource(myDao)
+    }
+    @Singleton
+    @Provides
+    fun getRepository(remoteDataSource: IRemoteDataSource, localDataSource: ILocalDataSource): IRepository {
+        return Repository(remoteDataSource, localDataSource)
+    }
+
 
 }
