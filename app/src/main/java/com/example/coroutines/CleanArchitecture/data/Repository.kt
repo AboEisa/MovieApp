@@ -1,41 +1,49 @@
 package com.example.coroutines.CleanArchitecture.data
 
 import com.example.coroutines.CleanArchitecture.data.local.ILocalDataSource
-import com.example.coroutines.CleanArchitecture.data.models.MovieModel
-
 import com.example.coroutines.CleanArchitecture.data.models.MovieResult
 import com.example.coroutines.CleanArchitecture.data.network.IRemoteDataSource
-import com.example.coroutines.CleanArchitecture.data.network.RemoteDataSource
-import com.example.coroutines.CleanArchitecture.domain.DomainMovieDetailsModel
-import com.example.coroutines.CleanArchitecture.domain.DomainMovieModel
-import com.example.coroutines.CleanArchitecture.domain.IRepository
+import com.example.coroutines.CleanArchitecture.domain.*
 import javax.inject.Inject
 
-class Repository @Inject constructor(private val remoteDataSource: IRemoteDataSource, private val localDataSource: ILocalDataSource) :IRepository {
-
-
+class Repository @Inject constructor(
+    private val remoteDataSource: IRemoteDataSource,
+    private val localDataSource: ILocalDataSource
+) : IRepository {
 
     override suspend fun getMovie(): Result<DomainMovieModel> {
-       val data = remoteDataSource.getMovie()
-      return if (data.isSuccess){
-           data
-           localDataSource.insert( data.getOrNull()!!.results!!)
-           Result.success(data.getOrNull()?.mapToDomain()!!)
-       }else{
-           localDataSource.getMovie()
-           Result.failure(data.exceptionOrNull()!!)
-       }
+        return try {
+            val data = remoteDataSource.getMovie()
+            if (data.isSuccess) {
+                data
+                insert(data.getOrNull()!!.results!!.map { it.mapToDomain() })
+                Result.success(data.getOrNull()!!.mapToDomain())
+            } else {
+                localDataSource.getMovie()
+                Result.failure(data.exceptionOrNull()!!)
+            }
+        } catch (e: Exception) {
+
+            Result.failure(e)
+        }
     }
 
     override suspend fun getMovieDetails(id: Int): Result<DomainMovieDetailsModel> {
-
-        val data = remoteDataSource.getMovieDetails(id)
-        return if (data.isSuccess){
-            data
-            Result.success(data.getOrNull()?.mapToDomain()!!)
-        }else{
-            Result.failure(data.exceptionOrNull()!!)
+        return try {
+            val data = remoteDataSource.getMovieDetails(id)
+            if (data.isSuccess) {
+                data
+                Result.success(data.getOrNull()!!.mapToDomain())
+            } else {
+                Result.failure(data.exceptionOrNull()!!)
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
         }
+    }
+
+    override suspend fun insert(movieResult: List<DomainMovieResult>) {
+        localDataSource.insert(movieResult.map { it.mapToEntity() })
     }
 
 
