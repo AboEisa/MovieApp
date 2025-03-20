@@ -30,7 +30,7 @@ fun DomainMovieDetailsModel.mapToPresentation(): PresentationMovieDetailsModel {
         release_date = release_date,
         overview = overview,
         poster_path = poster_path,
-        belongs_to_collection = belongs_to_collection.map { it?.mapToPresentation() }
+        belongs_to_collection = belongs_to_collection?.map { it?.mapToPresentation() } ?: emptyList()
     )
 }
 
