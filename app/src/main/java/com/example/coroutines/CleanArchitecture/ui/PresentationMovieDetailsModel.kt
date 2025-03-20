@@ -1,8 +1,4 @@
-package com.example.coroutines.CleanArchitecture.presentation
-
-import androidx.room.PrimaryKey
-import com.example.coroutines.CleanArchitecture.data.models.Genre
-import com.example.coroutines.CleanArchitecture.data.models.SpokenLanguage
+package com.example.coroutines.CleanArchitecture.ui
 
 data class PresentationMovieDetailsModel(
 

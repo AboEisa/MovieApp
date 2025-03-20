@@ -1,4 +1,4 @@
-package com.example.coroutines.CleanArchitecture.presentation
+package com.example.coroutines.CleanArchitecture.ui
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

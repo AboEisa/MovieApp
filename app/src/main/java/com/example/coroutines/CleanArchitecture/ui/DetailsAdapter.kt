@@ -1,4 +1,4 @@
-package com.example.coroutines.CleanArchitecture.presentation
+package com.example.coroutines.CleanArchitecture.ui
 
 import android.view.LayoutInflater
 import android.view.View

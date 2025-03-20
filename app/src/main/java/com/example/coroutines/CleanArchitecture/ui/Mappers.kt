@@ -1,6 +1,5 @@
-package com.example.coroutines.CleanArchitecture.presentation
+package com.example.coroutines.CleanArchitecture.ui
 
-import com.example.coroutines.CleanArchitecture.data.mapToDomain
 import com.example.coroutines.CleanArchitecture.domain.DomainBelongsToCollection
 import com.example.coroutines.CleanArchitecture.domain.DomainMovieDetailsModel
 import com.example.coroutines.CleanArchitecture.domain.DomainMovieModel

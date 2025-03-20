@@ -1,10 +1,8 @@
-package com.example.coroutines.CleanArchitecture.presentation
+package com.example.coroutines.CleanArchitecture.ui
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.coroutines.CleanArchitecture.data.Repository
-import com.example.coroutines.CleanArchitecture.data.models.MovieDetailsModel
 import com.example.coroutines.CleanArchitecture.domain.GetMovieDetailsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

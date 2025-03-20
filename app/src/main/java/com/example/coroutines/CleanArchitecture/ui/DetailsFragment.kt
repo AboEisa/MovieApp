@@ -1,6 +1,5 @@
-package com.example.coroutines.CleanArchitecture.presentation
+package com.example.coroutines.CleanArchitecture.ui
 
-import com.example.coroutines.CleanArchitecture.presentation.DetailsAdapter
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.coroutines.R
 import com.example.coroutines.databinding.FragmentDetailsBinding
-import com.example.coroutines.CleanArchitecture.data.models.MovieDetailsModel
 import com.example.coroutines.service.MyServices
 import dagger.hilt.android.AndroidEntryPoint
 

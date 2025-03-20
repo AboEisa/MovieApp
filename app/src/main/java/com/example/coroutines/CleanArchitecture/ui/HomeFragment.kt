@@ -1,4 +1,4 @@
-package com.example.coroutines.CleanArchitecture.presentation
+package com.example.coroutines.CleanArchitecture.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.coroutines.R
 import com.example.coroutines.databinding.FragmentHomeBinding
-import com.example.coroutines.CleanArchitecture.presentation.HomeViewModel
-import com.example.coroutines.CleanArchitecture.presentation.MovieAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
